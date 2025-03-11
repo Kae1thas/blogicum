@@ -1,0 +1,162 @@
+/* Общие стили для всего сайта */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* Хедер */
+header {
+    background-color: #87cefa;  /* Голубой фон */
+    color: white;
+    padding: 20px;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    display: flex;
+    align-items: center; /* Выравнивает элементы по центру */
+}
+
+header .logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px; /* Добавляем отступ между лого и текстом */
+}
+
+header .logo .site-name {
+    font-size: 24px; /* Размер текста */
+    font-weight: bold;
+    color:black;
+}
+
+/* Навигация */
+nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #0a6dfc;  /* Синий цвет текста */
+    font-size: 18px;
+    padding: 10px;
+}
+
+nav ul li a.active {
+    background-color: #0a6dfc;  /* Синий фон для активной кнопки */
+    color: white;  /* Белый текст */
+    border-radius: 5px;
+    padding: 7px 12px;
+}
+
+/* Основной контент */
+main {
+    padding: 20px;
+}
+
+.post {
+    background-color: #f4f4f4;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.post ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.post ul li {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.post a {
+    color: #00aaff;
+    text-decoration: none;
+}
+
+.post a:hover {
+    text-decoration: underline;
+}
+
+/* Подвал */
+footer {
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 15px 0; /* Уменьшаем вертикальные отступы */
+    
+    display: flex;
+    align-items: flex-end;  /* Опускаем текст чуть ниже */
+    justify-content: center; /* Выравниваем по горизонтали */
+    height: 35px; /* Фиксированная высота */
+    
+    width: 100%; /* Футер на всю ширину экрана */
+    max-width: none; /* Убираем ограничение контейнера */
+
+    border-top: 1px solid #d3d3d3; /* Серенькая граница сверху */
+}
+
+
+
+/* Устранение пробела снизу */
+html, body {
+    height: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.post-detail {
+    max-width: 800px; /* Делаем ширину такой же, как у постов в ленте */
+    margin: 20px auto 15px 20px; /* Центрируем блок, но даём отступы сверху и снизу */
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+}
+
+.post-detail ul {
+    list-style-type: disc; /* Оставляем точки */
+    padding-left: 20px;
+}
+
+.post-detail li {
+    margin-bottom: 10px;
+}
+
+.post-detail p {
+    line-height: 1.5; /* Полуторный интервал */
+}
+
+
+
+.category-title {
+    font-size: 64px; /* Измени размер по своему вкусу */
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.rules-content {
+    line-height: 1.5; /* Полуторный интервал */
+}

@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блогикум</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+              <div class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="Логотип">
+                <span class="site-name">Блогикум</span>
+              </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'blog:index' %}" class="{% if request.path == '/' %}active{% endif %}">Лента записей</a></li>
+                    <li><a href="{% url 'pages:about' %}" class="{% if request.path == '/pages/about/' %}active{% endif %}">О проекте</a></li>
+                    <li><a href="{% url 'pages:rules' %}" class="{% if request.path == '/pages/rules/' %}active{% endif %}">Наши правила</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>© Блогикум</p>
+    </footer>
+</body>
+</html>

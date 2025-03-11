@@ -1,0 +1,108 @@
+/* Общие стили для всего сайта */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Хедер */
+header {
+    background-color: #87cefa;  /* Голубой фон */
+    color: white;
+    padding: 20px;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header .logo .site-name {
+    color: black;
+}
+
+header .logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+/* Навигация */
+nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #0a6dfc;  /* Синий цвет текста */
+    font-size: 18px;
+}
+
+nav ul li a.active {
+    background-color: #0a6dfc;  /* Синий фон для активной кнопки */
+    color: white;  /* Белый текст */
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+/* Основной контент */
+main {
+    padding: 20px;
+}
+
+.post {
+    background-color: #f4f4f4;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.post ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.post ul li {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.post a {
+    color: #00aaff;
+    text-decoration: none;
+}
+
+.post a:hover {
+    text-decoration: underline;
+}
+
+/* Подвал */
+footer {
+    background-color: white;
+    color: black;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    top: 10;
+    width: 100%;
+}
+
+/* Устранение пробела снизу */
+html, body {
+    height: 100%;
+}
+
