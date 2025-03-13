@@ -1,11 +1,11 @@
-# blog/urls.py
 from django.urls import path
-from . import views
+from .views import index, post_detail, category_posts
 
-app_name = 'blog'  # Namespace для приложения
+app_name = 'blog'
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('posts/<int:id>/', views.post_detail, name='post_detail'),
-    path('category/<slug:category_slug>/', views.category_posts, name='category_posts'),
+    path('', index, name='index'),  # Главная страница блога
+    path('posts/<int:id>/', post_detail, name='post_detail'),  # Страница отдельного поста
+    path('category/<str:category_slug>/', category_posts, name='category_posts'),  # Страница категории
 ]
+
