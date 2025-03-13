@@ -1,0 +1,10 @@
+<!-- templates/blog/category_posts.html -->
+<h1>Категория: {{ category.name }}</h1>
+<ul>
+    {% for post in posts %}
+        <li>
+            <a href="{% url 'blog:post_detail' post.id %}">Читать далее</a>
+            <p>{{ post.excerpt }}</p>
+        </li>
+    {% endfor %}
+</ul>

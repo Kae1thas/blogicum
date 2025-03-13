@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _
 
 User = get_user_model()
 
@@ -11,7 +12,7 @@ class Category(models.Model):
     created_at = models.DateTimeField("Добавлено", auto_now_add=True)
 
     class Meta:
-        verbose_name = "Категория"
+        verbose_name = "категория"
         verbose_name_plural = "Категории"
 
     def __str__(self):
@@ -23,7 +24,7 @@ class Location(models.Model):
     created_at = models.DateTimeField("Добавлено", auto_now_add=True)
 
     class Meta:
-        verbose_name = "Местоположение"
+        verbose_name = "местоположение"
         verbose_name_plural = "Местоположения"
 
     def __str__(self):
@@ -40,7 +41,7 @@ class Post(models.Model):
     created_at = models.DateTimeField("Добавлено", auto_now_add=True)
 
     class Meta:
-        verbose_name = "Публикация"
+        verbose_name = "публикация"
         verbose_name_plural = "Публикации"
 
     def __str__(self):
