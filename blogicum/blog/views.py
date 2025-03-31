@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
 from blog.models import Post, Category
 from django.conf import settings
+from .forms import RegistrationForm
 
 def index(request):
     template = 'blog/index.html'
@@ -37,3 +38,18 @@ def category_posts(request, category_slug):
     context = {'category': category,
                'post_list': post_list}
     return render(request, template, context)
+
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            pass
+    else:
+        form = RegistrationForm()
+    
+    context = {
+        'form': form 
+    }
+    return render(request, 'registration/registration_form.html', context)
+
+
