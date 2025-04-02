@@ -5,7 +5,7 @@ app_name = 'blog'
 
 urlpatterns = [
     path('', index, name='index'),
-    path('posts/<int:post_id>/', post_detail, name='post_detail'),  # Изменено id на post_id
+    path('posts/<int:post_id>/', post_detail, name='post_detail'),
     path('category/<str:category_slug>/', category_posts, name='category_posts'),
     path('auth/registration/', register, name='register'),
     path('profile/edit/', edit_profile, name='edit_profile'),

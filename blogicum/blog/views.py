@@ -14,7 +14,25 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.http import Http404
 
-# Новая функция для фильтрации опубликованных постов
+
+@login_required
+def create_post(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            subject = f'Новый пост: {post.title}'
+            message = f'Пользователь {request.user.username} создал пост "{post.title}".'
+            from_email = settings.EMAIL_HOST_USER or 'noreply@blogicum.com'
+            recipient_list = [request.user.email]
+            send_mail(subject, message, from_email, recipient_list)
+            return redirect('blog:profile', username=request.user.username)
+    else:
+        form = PostForm()
+    return render(request, 'blog/create_post.html', {'form': form})
+
 def get_published_posts(queryset):
     return queryset.filter(
         is_published=True,
@@ -22,11 +40,9 @@ def get_published_posts(queryset):
         category__is_published=True
     )
 
-# Новая функция для аннотации количества комментариев
 def annotate_comments_count(queryset):
     return queryset.annotate(comment_count=Count('comments'))
 
-# Новая функция для пагинации
 def get_paginated_page(request, queryset, per_page=10):
     paginator = Paginator(queryset, per_page)
     page_number = request.GET.get('page')
@@ -149,7 +165,6 @@ def delete_comment(request, post_id, comment_id):
         return redirect('blog:post_detail', post_id=post_id)
     return render(request, 'blog/comment.html', {'comment': comment})
 
-# Новые CBV для статичных страниц
 class PageDetailView(DetailView):
     model = Page
     template_name = 'blog/page_detail.html'
@@ -179,20 +194,3 @@ class PageUpdateView(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('blog:page_detail', kwargs={'slug': self.object.slug})
 
-@login_required
-def create_post(request):
-    if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-            subject = f'Новый пост: {post.title}'
-            message = f'Пользователь {request.user.username} создал пост "{post.title}".'
-            from_email = settings.EMAIL_HOST_USER or 'noreply@blogicum.com'
-            recipient_list = [request.user.email]
-            send_mail(subject, message, from_email, recipient_list)
-            return redirect('blog:profile', username=request.user.username)
-    else:
-        form = PostForm()
-    return render(request, 'blog/create_post.html', {'form': form})
